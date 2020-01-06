@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+    {% include 'partials/navbar.html' %}
+
+        <h1>Name: {{ name }}</h1>
+        <h3>Tier: {{ tier }}</h3>
+        <h3>Rank: {{ rank }}</h3>
+        <h3>Lp: {{ lp }}</h3>
+        <h3>Winrate: {{ winrate }}</h3>
+        <h3>Total Games Played: {{ total }}</h3>
+</body>
+
+{% endblock %}
