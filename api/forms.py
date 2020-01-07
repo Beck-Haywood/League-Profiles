@@ -4,4 +4,7 @@ from api.models import Api
 class ApiForm(forms.ModelForm):
     class Meta:
         model = Api
-        fields = '__all__'
+        fields = ['summoner_name']
+
+# class QueryForm(forms.Form):
+#     query_name = forms.CharField(max_length=16)

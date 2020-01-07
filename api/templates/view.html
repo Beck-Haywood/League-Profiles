@@ -4,13 +4,13 @@
 
 <body>
     {% include 'partials/navbar.html' %}
+    
+        <h1>Summoner Name: {{ api.summoner_name }}</h1>
+        <h3>Tier: {{ api.tier }}</h3>
+        <h3>Rank: {{ api.rank }}</h3>
+        <h3>Winrate: {{ api.winrate }}</h3>
+        <h3>Total Games Played: {{ api.total_games }}</h3>
 
-        <h1>Name: {{ name }}</h1>
-        <h3>Tier: {{ tier }}</h3>
-        <h3>Rank: {{ rank }}</h3>
-        <h3>Lp: {{ lp }}</h3>
-        <h3>Winrate: {{ winrate }}</h3>
-        <h3>Total Games Played: {{ total }}</h3>
 </body>
 
 {% endblock %}
