@@ -4,15 +4,37 @@ import requests
 from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.views.generic import TemplateView
-from api.models import Api
-from api.forms import ApiForm
+from api.models import Api, Video
+from api.forms import ApiForm, VideoForm
 
+def showvideo(request):
 
-def leader(request):
-    return render(request, 'leaderboards.html')
+    lastvideo = Video.objects.last()
+
+    videofile = lastvideo.videofile
+
+    form= VideoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+    context= {'videofile': videofile,
+              'form': form
+              }
+    return render(request, 'videos.html', context)
+
+class VideoShow(ListView):
+    template_name = 'highlights.html'
+    model = Video
+    def get(self, request):
+        """ GET a list of Videos. """
+        videos = Video.objects.all()
+
+        return render(request, self.template_name, {
+           'videos': videos,
+        })
+    
 
 class ApiCreate(CreateView):
-  template_name = 'home.html'
+  template_name = 'verify.html'
   form_class = ApiForm
   success_url = '' 
 
@@ -24,7 +46,6 @@ class ApiCreate(CreateView):
   def post(self, request):
 
     if request.method == 'POST':
-        #Api.objects.all().delete()
         form = ApiForm(request.POST)
         region = 'na'
         summonerName = form.data['summoner_name']
@@ -71,12 +92,12 @@ class ApiCreate(CreateView):
 
 class ApiView(ListView):
     model = Api
-    template_name = 'view.html'
+    template_name = 'find.html'
 
     def get(self, request):
         """ GET a list of Info. """
-        api = Api.objects.latest('created')
+        apis = Api.objects.all()
 
         return render(request, self.template_name, {
-           'api': api,
+           'apis': apis,
         })

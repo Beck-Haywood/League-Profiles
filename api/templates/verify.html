@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'partials/navbar.html' %}
+
+<body>
+  <h2>Riot API</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type='submit'>Submit</button>
+  </form>
+</body>
+
+{% endblock %}

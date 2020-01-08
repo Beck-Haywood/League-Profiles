@@ -5,22 +5,29 @@
         <span class="navbar-toggler-icon"></span>
     </button>
         
-    <div class="collapse navbar-collapse" id="navbarColor01">
+    <div class="collapse navbar-collapse" id="navbarColor01">   
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="leaderboards/">Leaderboards<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Find a Solo/Duo partner</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="find.html">Find a Solo/Duo partner</a>
+                    <a class="nav-link" href="highlights/">Highlights</a>
             </li>
             <li class="nav-item">
-                    <a class="nav-link" href="highlights.html">Highlights</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="signup.html">SignUp/Login</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
+                    {% if user.is_authenticated %}
+                    <form class="form-inline my-0 my-lg-0">
+
+                        <div class="text-white">Hello, <strong>{{ user.username }}</strong>!</div>
+                        <a href="/verify" class="btn btn-info ml-4">Verify Account</a>
+                        <a href="{% url 'logout' %}" class="btn btn-warning ml-2">Log Out</a>
+
+                    {% else %}
+                    <a href="/accounts/login" class="btn btn-secondary ml-2">Log In</a>
+                    <a href="/accounts/signup" class="btn btn-primary ml-2">Sign Up</a>
+                </form>
+
+                    {% endif %}
+
             </li>
             </ul>
     </div>
