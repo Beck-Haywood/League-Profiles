@@ -25,7 +25,7 @@ SECRET_KEY = 'sd#&#o!@2f$wd%rok3i7wnp+gc($mt6l$pi*=ajchw)v^cgq_a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'league-profiles.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'league-profiles.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
