@@ -2,16 +2,14 @@
 
 {% block content %}
 
-
-
 <body>
     {% include 'partials/navbar.html' %}
-
-  <h2>Riot API</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input value="submit" type='submit'>
-  </form>
+    <h2>Riot API</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <input value="submit" type='submit'>
+        </form>
 </body>
+
 {% endblock %}

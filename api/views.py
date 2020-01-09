@@ -1,18 +1,13 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.urls import reverse_lazy
 import requests
 from django.views.generic import CreateView
 from django.views.generic import ListView
-from django.views.generic import TemplateView
 from api.models import Api, Video
 from api.forms import ApiForm, VideoForm
 from dotenv import load_dotenv
 import os
+
 def showvideo(request):
-
-    #lastvideo = Video.objects.last()
-
-    #videofile = lastvideo.videofile
 
     form = VideoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -33,7 +28,6 @@ class VideoShow(ListView):
            'videos': videos,
         })
     
-
 class ApiCreate(CreateView):
     template_name = 'verify.html'
     form_class = ApiForm
@@ -53,6 +47,7 @@ class ApiCreate(CreateView):
             summonerName = form.data['summoner_name']
             load_dotenv()
             api = str(os.getenv('API_CODE'))
+            api = 'RGAPI-c348fe70-5d29-4be7-812e-7a7f1855c255'
 
             params = {
                 "region": region,
@@ -87,8 +82,12 @@ class ApiCreate(CreateView):
             form.instance.rank = rank
             form.instance.winrate = winrate
             form.instance.total_games = total_games
-            form.save()
-            
+            #form.save_m2m()
+            #form.save()
+            form.instance.summoner_name = summonerName
+            form.instance.save()
+
+
             return HttpResponseRedirect('/')
         return render(request, self.template_name, {'form': form})
 
