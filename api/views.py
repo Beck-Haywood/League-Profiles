@@ -9,14 +9,14 @@ from api.forms import ApiForm, VideoForm
 
 def showvideo(request):
 
-    lastvideo = Video.objects.last()
+    #lastvideo = Video.objects.last()
 
-    videofile = lastvideo.videofile
+    #videofile = lastvideo.videofile
 
-    form= VideoForm(request.POST or None, request.FILES or None)
+    form = VideoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-    context= {'videofile': videofile,
+    context= {#'videofile': videofile,
               'form': form
               }
     return render(request, 'videos.html', context)
