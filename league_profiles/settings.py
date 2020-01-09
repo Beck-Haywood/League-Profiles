@@ -25,7 +25,7 @@ SECRET_KEY = 'sd#&#o!@2f$wd%rok3i7wnp+gc($mt6l$pi*=ajchw)v^cgq_a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'league-profiles.herokuapp.com']
 
 
 # Application definition
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'api',
     'accounts',
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
