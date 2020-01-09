@@ -9,6 +9,7 @@
     {% for video in videos %}
         <div class="col-4 col-sm-4 pl-md-1 " style="padding: 10px;">
             <h3>{{ video.video_name }}</h3>
+            <h6>{{ video.added_by }}</h6>
             <br><br>
             <video width='350' controls>
                 <source src='{{ MEDIA_URL }}{{ video.videofile }}' type='video/mp4'>

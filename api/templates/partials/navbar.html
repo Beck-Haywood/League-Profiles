@@ -17,8 +17,9 @@
                     <a class="nav-link" href="/upload">Upload your Highlights</a>
             </li>
             <li class="nav-item">
+                <form class="form-inline my-0 my-lg-0">
+
                     {% if user.is_authenticated %}
-                    <form class="form-inline my-0 my-lg-0">
 
                         <div class="text-white">Hello, <strong>{{ user.username }}</strong>!</div>
                         <a href="/verify" class="btn btn-info ml-4">Verify Account</a>
@@ -27,9 +28,10 @@
                     {% else %}
                     <a href="/accounts/login" class="btn btn-secondary ml-2">Log In</a>
                     <a href="/accounts/signup" class="btn btn-primary ml-2">Sign Up</a>
-                </form>
 
                     {% endif %}
+                    </form>
+
 
             </li>
             </ul>
