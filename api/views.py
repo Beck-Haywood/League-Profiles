@@ -47,7 +47,7 @@ class ApiCreate(CreateView):
             summonerName = form.data['summoner_name']
             load_dotenv()
             api = str(os.getenv('API_CODE'))
-            api = 'RGAPI-c348fe70-5d29-4be7-812e-7a7f1855c255'
+            api = 'RGAPI-1f3392e9-1c3b-4dda-bf33-2a3d37c11dd3'
 
             params = {
                 "region": region,
@@ -62,7 +62,7 @@ class ApiCreate(CreateView):
 
             if responseJSON_2[0]["queueType"] == "RANKED_SOLO_5x5":
                 infoNum = 0
-            elif responseJSON_2[0]["queueType"] == "RANKED_SOLO_5x5":
+            elif responseJSON_2[1]["queueType"] == "RANKED_SOLO_5x5":
                 infoNum = 1
             else:
                 infoNum = 2
